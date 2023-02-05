@@ -1,0 +1,21 @@
+public static boolean isGmailOrOutlook(String email) {
+    String gmail = "@gmail.com";
+    String outlook = "@outlook.com";
+    int emInd = email.indexOf('@');
+    if (emInd == 0 || emInd == -1) {    //проверка на наличие текста перед @ и наличие @
+        return false;
+    }
+    Pattern pattern1 = Pattern.compile("[a-zA-Z0-9]+\\b@gmail.com");  //ввод регулярного выражения, с которым сравниваем
+    Pattern pattern2 = Pattern.compile("[a-zA-Z0-9]+\\b@outlook.com"); // .+\b -- перед @ может быть 1 и более любых символов и поиск начинаем с @
+    Matcher matcher1 = pattern1.matcher(email);  //ввод текста, который сравниваем с чем то
+    Matcher matcher2 = pattern2.matcher(email);
+    boolean result1 = matcher1.matches(); //обработка - сравнение
+    boolean result2 = matcher2.matches();
+    if (result1 == true) { //если равно -- огонь, если нет -- идем дальше
+        return true;
+    } else if (result2 == true) { //если равно -- огонь, если нет -- идем дальше
+        return true;
+    } else {
+        return false; //если ничему не равно, возвращаем фолсе
+    }
+}
